@@ -4954,11 +4954,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ôn ASP.NET\\TodoListAPI\\TodoListAPI\\TodoListAPI.csproj",
+      "projectUniqueName": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\TodoListAPI.csproj",
       "projectName": "TodoListAPI",
-      "projectPath": "D:\\ôn ASP.NET\\TodoListAPI\\TodoListAPI\\TodoListAPI.csproj",
+      "projectPath": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\TodoListAPI.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\ôn ASP.NET\\TodoListAPI\\TodoListAPI\\obj\\",
+      "outputPath": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",

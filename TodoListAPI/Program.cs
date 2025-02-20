@@ -32,6 +32,17 @@ namespace TodoListAPI
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
+                    //options.Events = new JwtBearerEvents
+                    //{
+                    //    OnChallenge = context =>
+                    //    {
+                    //        context.HandleResponse();
+                    //        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    //        context.Response.ContentType = "application/json";
+                    //        return context.Response.WriteAsync("{\"message\": \"Unauthorized\"}");
+                    //    }
+                    //};
+
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = false,
@@ -43,6 +54,7 @@ namespace TodoListAPI
                     };
                 });
 
+
             // generate database (code first)
             IConfigurationRoot cf = new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).Build();
@@ -51,13 +63,16 @@ namespace TodoListAPI
 
             // Register Services
             builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<ITodoService, TodoService>();
 
             // Register repository
             builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
             // Register autormapper
             builder.Services.AddAutoMapper(typeof(MappingUser));
+            builder.Services.AddAutoMapper(typeof(MappingTodo));
 
+            builder.Services.AddHttpContextAccessor();
 
             WebApplication app = builder.Build();
 

@@ -1,0 +1,271 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\repositories\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\repositories\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\services\\todoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\services\\todoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\dtos\\todolistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\dtos\\todolistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\controllers\\todocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\controllers\\todocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\dtos\\errormessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\dtos\\errormessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\dtos\\todoitemresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\dtos\\todoitemresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\dtos\\tododto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\dtos\\tododto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\mapper\\mappingtodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\mapper\\mappingtodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\models\\todo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\models\\todo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\dtos\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\dtos\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RepositoryBase.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Repositories\\RepositoryBase.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\Repositories\\RepositoryBase.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Repositories\\RepositoryBase.cs",
+              "RelativeToolTip": "TodoListAPI\\Repositories\\RepositoryBase.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAqwFMAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T14:57:58.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TodoListDTO.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TodoListDTO.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\DTOs\\TodoListDTO.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TodoListDTO.cs",
+              "RelativeToolTip": "TodoListAPI\\DTOs\\TodoListDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAQAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T09:30:04.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "TodoListAPI\\appsettings.json",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\appsettings.json",
+              "RelativeToolTip": "TodoListAPI\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-20T07:46:24.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ErrorMessageDTO.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\ErrorMessageDTO.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\DTOs\\ErrorMessageDTO.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\ErrorMessageDTO.cs",
+              "RelativeToolTip": "TodoListAPI\\DTOs\\ErrorMessageDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T16:51:08.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Program.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\Program.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Program.cs",
+              "RelativeToolTip": "TodoListAPI\\Program.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAQwD0AAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T14:03:23.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\DTOs\\LoginDTO.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\LoginDTO.cs",
+              "RelativeToolTip": "TodoListAPI\\DTOs\\LoginDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T14:01:28.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TodoItemResponseDTO.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TodoItemResponseDTO.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\DTOs\\TodoItemResponseDTO.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TodoItemResponseDTO.cs",
+              "RelativeToolTip": "TodoListAPI\\DTOs\\TodoItemResponseDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T14:01:06.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "TodoListAPI\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwB4AAABrAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T13:46:14.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TodoController.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Controllers\\TodoController.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\Controllers\\TodoController.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Controllers\\TodoController.cs",
+              "RelativeToolTip": "TodoListAPI\\Controllers\\TodoController.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAAlwEsAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T13:45:41.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MappingTodo.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Mapper\\MappingTodo.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\Mapper\\MappingTodo.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Mapper\\MappingTodo.cs",
+              "RelativeToolTip": "TodoListAPI\\Mapper\\MappingTodo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T13:40:44.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TokenDTO.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TokenDTO.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\DTOs\\TokenDTO.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TokenDTO.cs",
+              "RelativeToolTip": "TodoListAPI\\DTOs\\TokenDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T13:37:09.384Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TodoDTO.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TodoDTO.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\DTOs\\TodoDTO.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TodoDTO.cs",
+              "RelativeToolTip": "TodoListAPI\\DTOs\\TodoDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T13:37:05.56Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Todo.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Models\\Todo.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\Models\\Todo.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Models\\Todo.cs",
+              "RelativeToolTip": "TodoListAPI\\Models\\Todo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T13:36:09.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TodoService.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Services\\TodoService.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\Services\\TodoService.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Services\\TodoService.cs",
+              "RelativeToolTip": "TodoListAPI\\Services\\TodoService.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAUwFgAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T13:33:21.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\Services\\AuthService.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Services\\AuthService.cs",
+              "RelativeToolTip": "TodoListAPI\\Services\\AuthService.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwHEAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-19T13:31:33.973Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

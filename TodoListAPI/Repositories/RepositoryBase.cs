@@ -7,6 +7,7 @@ namespace TodoListAPI.Repositories
     public interface IRepositoryBase<T> where T : class
     {
         Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetTodoListWithPaginationAsync(Expression<Func<T, bool>> expression = null, int pageNumber = 1, int limit = 10);
         //Task<T?> GetById(Expression<Func<T, bool>> expression = null);
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression = null);
         //Task<T?> SingleOrDefaultAsync(Expression<Func<T, bool>> expression = null);
@@ -69,6 +70,18 @@ namespace TodoListAPI.Repositories
             }
 
             return await query.AnyAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetTodoListWithPaginationAsync(Expression<Func<T, bool>> expression = null, int pageNumber = 1, int limit = 10)
+        {
+            IQueryable<T> query = _dbSet;
+            if (expression != null)
+            {
+                query = query.Where(expression);
+            }
+
+            query = query.Skip((pageNumber - 1) * limit).Take(limit);
+            return await query.ToListAsync();
         }
     }
 }
