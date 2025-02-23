@@ -79,6 +79,7 @@ namespace TodoListAPI.Repositories
             {
                 query = query.Where(expression);
             }
+            query = query.OrderByDescending(e => e);
 
             query = query.Skip((pageNumber - 1) * limit).Take(limit);
             return await query.ToListAsync();

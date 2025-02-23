@@ -7,11 +7,13 @@ namespace TodoListAPI.Services
 {
     public interface ITodoService
     {
-        Task<(bool Success, int StatusCode, ErrorMessageDTO Message, TodoItemResponseDTO TodoResponse)> CreateTodoItem(TodoDTO todoItem);
-        Task<(bool Success, int StatusCode, ErrorMessageDTO Message, TodoItemResponseDTO TodoResponse)> UpdateTodoItem(int todoId, TodoDTO todoItem);
-        Task<(bool Success, int StatusCode, ErrorMessageDTO Message)> DeleteTodoItem(int todoId);
-        Task<(bool Success, int StatusCode, ErrorMessageDTO Message, TodoListDTO todoList)> GetAllTodo(int page, int limit);
-        Task<TodoItemResponseDTO> GetTodoItem(int todoId);
+        Task<TodoItemResponseDTO?> CreateTodoItem(TodoDTO todoItem);
+        Task<TodoItemResponseDTO?> UpdateTodoItem(int todoId, TodoDTO todoItem);
+        Task<bool> DeleteTodoItem(int todoId);
+        Task<TodoListDTO?> GetAllTodo(int page, int limit);
+        Task<TodoItemResponseDTO?> GetTodoItem(int todoId);
+        Task<TodoListDTO?> GetAllTodoByTitle(string title, int page, int limit);
+        bool HasPermission(int userId, int todoId);
     }
     public class TodoService : ITodoService
     {
@@ -29,71 +31,72 @@ namespace TodoListAPI.Services
             _authService = authService;
         }
 
-        public async Task<(bool Success, int StatusCode, ErrorMessageDTO Message, TodoItemResponseDTO TodoResponse)> CreateTodoItem(TodoDTO todoItem)
+        public async Task<TodoItemResponseDTO?> CreateTodoItem(TodoDTO todoItem)
         {
-            (bool Success, int StatusCode, ErrorMessageDTO Message, int? UserId) user = await _authService.Authentication();
-            if (!user.Success)
+            int? userId = _authService.GetUserForClaims();
+            if (userId == null)
             {
-                return (false, user.StatusCode, user.Message, null);
+                return null;
             }
 
             Todo todo = _mapper.Map<Todo>(todoItem);
-            todo.UserId = (int)user.UserId;
+            todo.UserId = userId.Value;
 
             await _repository.Todo.CreateAsync(todo);
             await _repository.SavechangeAsync();
 
-            return (true, user.StatusCode, null, await GetTodoItem(todo.Id));
+            return await GetTodoItem(todo.Id);
         }
 
-        public async Task<TodoItemResponseDTO> GetTodoItem(int todoId)
+        public async Task<TodoItemResponseDTO?> GetTodoItem(int todoId)
         {
-            Todo todo = _repository.Todo.SingleOrDefault(t => t.Id == todoId);
+            Todo? todo = _repository.Todo.SingleOrDefault(t => t.Id == todoId);
+            if (todo == null) return null;
 
-            if (todo == null)
-            {
-                return null;
-            }
             return _mapper.Map<TodoItemResponseDTO>(todo);
         }
 
-        public async Task<(bool Success, int StatusCode, ErrorMessageDTO Message, TodoItemResponseDTO TodoResponse)> UpdateTodoItem(int todoId, TodoDTO todoItem)
+        public async Task<TodoItemResponseDTO?> UpdateTodoItem(int todoId, TodoDTO todoItem)
         {
-            (bool Success, int StatusCode, ErrorMessageDTO Message, Todo todo) validationResult = await _authService.ValidateUserPermission(todoId);
-            if (!validationResult.Success)
-            {
-                return (false, validationResult.StatusCode, validationResult.Message, null);
-            }
+            Todo? todo = _repository.Todo.SingleOrDefault(t => t.Id == todoId);
+            if (todo == null) return null;
+            //DateTime? dueTime = todoItem.DueDate;
 
-            _mapper.Map(todoItem, validationResult.todo);
+            //// giữ nguyên giá trị due date ban đầu khi cập nhật ko nhập gì
+            //if (todoItem.DueDate == null && todo.DueDate != null)
+            //{
+            //    dueTime = todo.DueDate;
+            //}
 
-            await _repository.Todo.UpdateAsync(validationResult.todo);
+            _mapper.Map(todoItem, todo);
+            todo.UpdatedDate = DateTime.Now;
+            //todo.DueDate = dueTime;
+
+            //await _repository.Todo.UpdateAsync(todo); EF Core đang tracking todo, thì bạn không cần gọi UpdateAsync().
+            // EF tự động phát hiện thay đổi và update khi gọi SaveChangesAsync().
             await _repository.SavechangeAsync();
-            return (true, 200, null, await GetTodoItem(validationResult.todo.Id));
+            return await GetTodoItem(todo.Id);
         }
 
-        public async Task<(bool Success, int StatusCode, ErrorMessageDTO Message)> DeleteTodoItem(int todoId)
+        public async Task<bool> DeleteTodoItem(int todoId)
         {
-            (bool Success, int StatusCode, ErrorMessageDTO Message, Todo todo) validationResult = await _authService.ValidateUserPermission(todoId);
-            if (!validationResult.Success)
-            {
-                return (false, validationResult.StatusCode, validationResult.Message);
-            }
+            Todo? todo = _repository.Todo.SingleOrDefault(t => t.Id == todoId);
+            if (todo == null) return false;
 
-            await _repository.Todo.DeleteAsync(validationResult.todo);
+            await _repository.Todo.DeleteAsync(todo);
             await _repository.SavechangeAsync();
-            return (true, 200, null);
+            return true;
         }
 
-        public async Task<(bool Success, int StatusCode, ErrorMessageDTO Message, TodoListDTO todoList)> GetAllTodo(int page, int limit)
+        public async Task<TodoListDTO?> GetAllTodo(int page, int limit)
         {
-            (bool Success, int StatusCode, ErrorMessageDTO Message, int? UserId) user = await _authService.Authentication();
-            if (!user.Success)
+            int? userId = _authService.GetUserForClaims();
+            if (userId == null)
             {
-                return (false, user.StatusCode, user.Message, null);
+                return null;
             }
 
-            IEnumerable<Todo> todos = await _repository.Todo.GetTodoListWithPaginationAsync(t => t.UserId == user.UserId, page, limit);
+            IEnumerable<Todo> todos = await _repository.Todo.GetTodoListWithPaginationAsync(t => t.UserId == userId, page, limit);
             List<TodoItemResponseDTO> todoDTOs = _mapper.Map<List<TodoItemResponseDTO>>(todos);
             int total = todoDTOs.Count;
             TodoListDTO todoListDTO = new()
@@ -104,7 +107,37 @@ namespace TodoListAPI.Services
                 total = total
             };
 
-            return (true, 200, null, todoListDTO);
+            return todoListDTO;
+        }
+
+        public bool HasPermission(int userId, int todoId)
+        {
+            Todo userIdAddTodo = _repository.Todo.SingleOrDefault(t => t.Id == todoId && t.UserId == userId);
+            return userIdAddTodo != null ? true : false;
+        }
+
+        public async Task<TodoListDTO?> GetAllTodoByTitle(string title, int page, int limit)
+        {
+            int? userId = _authService.GetUserForClaims();
+            if (userId == null)
+            {
+                return null;
+            }
+
+            IEnumerable<Todo> todos = await _repository.Todo.GetTodoListWithPaginationAsync(t => t.UserId == userId && t.Title.Contains(title), page, limit);
+            if (todos == null)
+                return null;
+
+            List<TodoItemResponseDTO> todoDTOs = _mapper.Map<List<TodoItemResponseDTO>>(todos);
+            TodoListDTO todoListDTO = new()
+            {
+                data = todoDTOs,
+                page = page,
+                limit = limit,
+                total = todoDTOs.Count
+            };
+
+            return todoListDTO;
         }
     }
 }

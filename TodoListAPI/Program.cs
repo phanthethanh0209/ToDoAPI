@@ -68,6 +68,9 @@ namespace TodoListAPI
             // Register repository
             builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
+            // Register Filter if use ServiceFilter
+            //builder.Services.AddScoped<JwtAuthorizeFilter>();
+
             // Register autormapper
             builder.Services.AddAutoMapper(typeof(MappingUser));
             builder.Services.AddAutoMapper(typeof(MappingTodo));

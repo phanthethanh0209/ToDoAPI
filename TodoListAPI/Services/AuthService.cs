@@ -13,8 +13,10 @@ namespace TodoListAPI.Services
     {
         Task<(bool Success, string ErrorMessage, TokenDTO token)> Register(RegisterDTO userDTO);
         Task<(bool Success, string ErrorMessage, TokenDTO token)> Login(LoginDTO userDTO);
-        Task<(bool Success, int StatusCode, ErrorMessageDTO Message, int? UserId)> Authentication();
-        Task<(bool Success, int StatusCode, ErrorMessageDTO Message, Todo todo)> ValidateUserPermission(int todoId);
+        //Task<(bool Success, int StatusCode, ErrorMessageDTO Message, int? UserId)> Authentication();
+        //Task<(bool Success, int StatusCode, ErrorMessageDTO Message, Todo todo)> ValidateUserPermission(int todoId);
+        int? GetUserForClaims();
+
         TokenDTO GenerateToken(User user);
 
     }
@@ -97,50 +99,67 @@ namespace TodoListAPI.Services
             };
         }
 
-        public async Task<(bool Success, int StatusCode, ErrorMessageDTO Message, int? UserId)> Authentication()
+        //public async Task<(bool Success, int StatusCode, ErrorMessageDTO Message, int? UserId)> Authentication()
+        //{
+        //    HttpContext? httpContext = _contextAccessor.HttpContext;
+        //    ErrorMessageDTO errorMessage = new();
+        //    if (httpContext?.User?.Identity != null && httpContext.User.Identity.IsAuthenticated)
+        //    {
+        //        Claim? userIdClaim = httpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        //        if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
+        //        {
+        //            return (true, 200, null, userId);
+        //        }
+        //        else
+        //        {
+        //            return (false, 500, new ErrorMessageDTO { Message = "Cannot retrieve the user ID from claims." }, null);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return (false, 401, new ErrorMessageDTO { Message = "Unauthorized" }, null);
+        //    }
+        //}
+
+        //public async Task<(bool Success, int StatusCode, ErrorMessageDTO Message, Todo todo)> ValidateUserPermission(int todoId)
+        //{
+        //    (bool Success, int StatusCode, ErrorMessageDTO Message, int? UserId) user = await Authentication();
+        //    if (!user.Success)
+        //    {
+        //        return (false, 401, user.Message, null);
+        //    }
+
+        //    Todo todo = await _repository.Todo.SingleOrDefaultAsync(t => t.Id == todoId);
+
+        //    if (todo == null)
+        //    {
+        //        return (false, 404, new ErrorMessageDTO { Message = "Todo not found" }, null);
+        //    }
+
+        //    if (!todo.UserId.Equals(user.UserId))
+        //    {
+        //        return (false, 403, new ErrorMessageDTO { Message = "Forbidden" }, null);
+        //    }
+
+        //    return (true, 200, null, todo);
+
+        //}
+
+        public int? GetUserForClaims()
         {
             HttpContext? httpContext = _contextAccessor.HttpContext;
-            ErrorMessageDTO errorMessage = new();
-            if (httpContext?.User?.Identity != null && httpContext.User.Identity.IsAuthenticated)
+            if (httpContext?.User?.Identity?.IsAuthenticated != true)
             {
-                Claim? userIdClaim = httpContext.User.FindFirst(ClaimTypes.NameIdentifier);
-                if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
-                {
-                    return (true, 200, null, userId);
-                }
-                else
-                {
-                    return (false, 500, new ErrorMessageDTO { Message = "Cannot retrieve the user ID from claims." }, null);
-                }
-            }
-            else
-            {
-                return (false, 401, new ErrorMessageDTO { Message = "Unauthorized" }, null);
-            }
-        }
-
-        public async Task<(bool Success, int StatusCode, ErrorMessageDTO Message, Todo todo)> ValidateUserPermission(int todoId)
-        {
-            (bool Success, int StatusCode, ErrorMessageDTO Message, int? UserId) user = await Authentication();
-            if (!user.Success)
-            {
-                return (false, 401, user.Message, null);
+                return null;
             }
 
-            Todo todo = _repository.Todo.SingleOrDefault(t => t.Id == todoId);
-
-            if (todo == null)
+            Claim? userIdClaim = httpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
             {
-                return (false, 404, new ErrorMessageDTO { Message = "Todo not found" }, null);
+                return null;
             }
 
-            if (!todo.UserId.Equals(user.UserId))
-            {
-                return (false, 403, new ErrorMessageDTO { Message = "Forbidden" }, null);
-            }
-
-            return (true, 200, null, todo);
-
+            return userId;
         }
     }
 }

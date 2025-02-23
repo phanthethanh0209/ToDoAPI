@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TodoListAPI.Attributes;
 using TodoListAPI.DTOs;
 using TodoListAPI.Services;
 
 namespace TodoListAPI.Controllers
 {
+    // C1: [ServiceFilter(typeof(JwtAuthorizeFilter))] // Nếu JwtAuthorizeFilter có constructor nhận service từ DI, ta dùng ServiceFilter.
+    [JwtAuthorizeAttribute] // C2
     [Route("api/[controller]")]
     [ApiController]
     public class TodoController : ControllerBase
@@ -15,23 +18,22 @@ namespace TodoListAPI.Controllers
             _todoService = todoService;
         }
 
-        //[Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateTodoItem([FromBody] TodoDTO todoItem)
         {
-            (bool Success, int StatusCode, ErrorMessageDTO Message, TodoItemResponseDTO TodoResponse) todo = await _todoService.CreateTodoItem(todoItem);
-            if (!todo.Success)
+            TodoItemResponseDTO? todo = await _todoService.CreateTodoItem(todoItem);
+            if (todo == null)
             {
-                return StatusCode(todo.StatusCode, todo.Message);
+                return BadRequest("Create to do item fail");
             }
 
-            return StatusCode(todo.StatusCode, todo.TodoResponse);
+            return Ok(todo);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetTodoItem(int id)
+        [HttpGet("{todoId}")]
+        public async Task<IActionResult> GetTodoItem(int todoId)
         {
-            TodoItemResponseDTO todo = await _todoService.GetTodoItem(id);
+            TodoItemResponseDTO? todo = await _todoService.GetTodoItem(todoId);
             if (todo == null)
             {
                 return NotFound();
@@ -39,26 +41,25 @@ namespace TodoListAPI.Controllers
             return Ok(todo);
         }
 
-        //[Authorize]
         [HttpPut("{todoId}")]
         public async Task<IActionResult> UpdateTodoItem(int todoId, TodoDTO todo)
         {
-            (bool Success, int StatusCode, ErrorMessageDTO Message, TodoItemResponseDTO TodoResponse) todoItem = await _todoService.UpdateTodoItem(todoId, todo);
-            if (!todoItem.Success)
+            TodoItemResponseDTO? todoItem = await _todoService.UpdateTodoItem(todoId, todo);
+            if (todoItem == null)
             {
-                return StatusCode(todoItem.StatusCode, todoItem.Message);
+                return BadRequest("Update to do item fail");
             }
 
-            return StatusCode(todoItem.StatusCode, todoItem.TodoResponse);
+            return Ok(todoItem);
         }
 
-        [HttpDelete("{todoId}")]
+        [HttpDelete("todos/{todoId}")]
         public async Task<IActionResult> DeleteTodoItem(int todoId)
         {
-            (bool Success, int StatusCode, ErrorMessageDTO Message) todoItem = await _todoService.DeleteTodoItem(todoId);
-            if (!todoItem.Success)
+            bool todoItem = await _todoService.DeleteTodoItem(todoId);
+            if (!todoItem)
             {
-                return StatusCode(todoItem.StatusCode, todoItem.Message);
+                return BadRequest("Delete to do item fail");
             }
 
             return NoContent();
@@ -67,12 +68,21 @@ namespace TodoListAPI.Controllers
         [HttpGet("todos")]
         public async Task<IActionResult> GetAllTodo(int page = 1, int limit = 10)
         {
-            (bool Success, int StatusCode, ErrorMessageDTO Message, TodoListDTO todoList) todos = await _todoService.GetAllTodo(page, limit);
-            if (!todos.Success)
+            TodoListDTO? todos = await _todoService.GetAllTodo(page, limit);
+            if (todos == null)
             {
-                return StatusCode(todos.StatusCode, todos.Message);
+                return BadRequest("Delete to do item fail");
             }
-            return Ok(todos.todoList);
+            return Ok(todos);
+        }
+
+        [HttpGet("todos/filter")]
+        public async Task<IActionResult> GetTodoByTitle(string title, int page, int limit)
+        {
+            TodoListDTO? todos = await _todoService.GetAllTodoByTitle(title, page, limit);
+            if (todos == null)
+                return NotFound("Not found to do with '" + title + "'");
+            return Ok(todos);
         }
     }
 }
