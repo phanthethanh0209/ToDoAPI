@@ -15,8 +15,8 @@ You can view the project details on link here: [Project_URL](https://roadmap.sh/
   - View task list with pagination and search by title 
   - Update tasks  
   - Delete tasks
-- **Security**: Uses JWT for authentication and access control.  
-
+- **Security**: Uses JWT for authentication and access control. Implements refresh tokens to allow users to obtain new access tokens without requiring them to log in again, enhancing security and user experience.
+ 
 ## Technologies  
 - **ASP.NET Core API 8**
 - **SQL Server**
