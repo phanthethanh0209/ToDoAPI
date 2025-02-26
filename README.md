@@ -12,7 +12,7 @@ You can view the project details on link here: [Project_URL](https://roadmap.sh/
 - **User Login**: Authenticates users and issues JWT tokens.  
 - **Task List Management**:  
   - Create new tasks  
-  - View task list with pagination
+  - View task list with pagination and search by title 
   - Update tasks  
   - Delete tasks
 - **Security**: Uses JWT for authentication and access control.  
