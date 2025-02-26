@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\models\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\models\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|d:\\asp.net core web api\\up_github\\todoapi\\todolistapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84E89EBE-07B0-4B0D-8B00-B2052DAEC3CE}|TodoListAPI\\TodoListAPI.csproj|solutionrelative:todolistapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -42,11 +46,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "MyDBContext.cs",
+              "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Models\\MyDBContext.cs",
+              "RelativeDocumentMoniker": "TodoListAPI\\Models\\MyDBContext.cs",
+              "ToolTip": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Models\\MyDBContext.cs",
+              "RelativeToolTip": "TodoListAPI\\Models\\MyDBContext.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAowAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T16:41:39.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "TodoController.cs",
               "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Controllers\\TodoController.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\Controllers\\TodoController.cs",
@@ -58,7 +75,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "TokenDTO.cs",
               "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TokenDTO.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\DTOs\\TokenDTO.cs",
@@ -70,7 +87,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\Controllers\\AuthController.cs",
@@ -82,7 +99,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AuthService.cs",
               "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\Services\\AuthService.cs",
@@ -95,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Todo.cs",
               "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\Models\\Todo.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\Models\\Todo.cs",
@@ -107,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "TodoListDTO.cs",
               "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TodoListDTO.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\DTOs\\TodoListDTO.cs",
@@ -119,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "TodoItemResponseDTO.cs",
               "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TodoItemResponseDTO.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\DTOs\\TodoItemResponseDTO.cs",
@@ -131,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "TodoDTO.cs",
               "DocumentMoniker": "D:\\ASP.NET Core Web API\\up_github\\ToDoAPI\\TodoListAPI\\DTOs\\TodoDTO.cs",
               "RelativeDocumentMoniker": "TodoListAPI\\DTOs\\TodoDTO.cs",
