@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using TodoListAPI.DTOs;
 using TodoListAPI.Models;
@@ -11,13 +12,16 @@ namespace TodoListAPI.Services
 {
     public interface IAuthService
     {
-        Task<(bool Success, string ErrorMessage, TokenDTO token)> Register(RegisterDTO userDTO);
-        Task<(bool Success, string ErrorMessage, TokenDTO token)> Login(LoginDTO userDTO);
+        Task<(bool Success, string? ErrorMessage, TokenDTO? token)> Register(RegisterDTO userDTO);
+        Task<(bool Success, string? ErrorMessage, TokenDTO? token)> Login(LoginDTO userDTO);
         //Task<(bool Success, int StatusCode, ErrorMessageDTO Message, int? UserId)> Authentication();
         //Task<(bool Success, int StatusCode, ErrorMessageDTO Message, Todo todo)> ValidateUserPermission(int todoId);
         int? GetUserForClaims();
 
         TokenDTO GenerateToken(User user);
+        Task<TokenDTO?> RefreshToken(string refreshToken);
+        string GenerateRefreshToken();
+        string GenerateAndSaveRefreshTokenAsync(User user);
 
     }
     public class AuthService : IAuthService
@@ -37,7 +41,7 @@ namespace TodoListAPI.Services
             _contextAccessor = contextAccessor;
         }
 
-        public async Task<(bool Success, string ErrorMessage, TokenDTO token)> Register(RegisterDTO userDTO)
+        public async Task<(bool Success, string? ErrorMessage, TokenDTO? token)> Register(RegisterDTO userDTO)
         {
             bool isEmailUnique = await _repository.User.AnyAsync(m => m.Email == userDTO.Email);
             if (isEmailUnique)
@@ -56,7 +60,7 @@ namespace TodoListAPI.Services
         }
 
 
-        public async Task<(bool Success, string ErrorMessage, TokenDTO token)> Login(LoginDTO userDTO)
+        public async Task<(bool Success, string? ErrorMessage, TokenDTO? token)> Login(LoginDTO userDTO)
         {
             User user = _repository.User.SingleOrDefault(u => u.Email == userDTO.Email);
             if (user == null || !BCrypt.Net.BCrypt.Verify(userDTO.Password, user.Password))
@@ -91,59 +95,33 @@ namespace TodoListAPI.Services
             SecurityToken token = tokenHandler.CreateToken(tokenDescriptor); // Tạo token
             string accessToken = tokenHandler.WriteToken(token); // Chuyển đổi token thành chuỗi
 
-
             return new TokenDTO
             {
-                Token = accessToken
-                //RefreshToken = refreshToken,
+                AccessToken = accessToken,
+                RefreshToken = GenerateAndSaveRefreshTokenAsync(user)
             };
         }
 
-        //public async Task<(bool Success, int StatusCode, ErrorMessageDTO Message, int? UserId)> Authentication()
-        //{
-        //    HttpContext? httpContext = _contextAccessor.HttpContext;
-        //    ErrorMessageDTO errorMessage = new();
-        //    if (httpContext?.User?.Identity != null && httpContext.User.Identity.IsAuthenticated)
-        //    {
-        //        Claim? userIdClaim = httpContext.User.FindFirst(ClaimTypes.NameIdentifier);
-        //        if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
-        //        {
-        //            return (true, 200, null, userId);
-        //        }
-        //        else
-        //        {
-        //            return (false, 500, new ErrorMessageDTO { Message = "Cannot retrieve the user ID from claims." }, null);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return (false, 401, new ErrorMessageDTO { Message = "Unauthorized" }, null);
-        //    }
-        //}
+        public async Task<TokenDTO?> RefreshToken(string refreshToken)
+        {
+            RefreshToken refresh = _repository.RefreshToken.SingleOrDefault(r => r.Token == refreshToken);
 
-        //public async Task<(bool Success, int StatusCode, ErrorMessageDTO Message, Todo todo)> ValidateUserPermission(int todoId)
-        //{
-        //    (bool Success, int StatusCode, ErrorMessageDTO Message, int? UserId) user = await Authentication();
-        //    if (!user.Success)
-        //    {
-        //        return (false, 401, user.Message, null);
-        //    }
+            if (refresh is null || refresh.IsRevoked || refresh.Expires < DateTime.Now)
+            {
+                return null;
+            }
 
-        //    Todo todo = await _repository.Todo.SingleOrDefaultAsync(t => t.Id == todoId);
+            User? user = await _repository.User.GetByIdAsync(t => t.Id == refresh.UserId);
+            if (user == null)
+            {
+                return null;
+            }
 
-        //    if (todo == null)
-        //    {
-        //        return (false, 404, new ErrorMessageDTO { Message = "Todo not found" }, null);
-        //    }
+            refresh.IsRevoked = true;
+            await _repository.RefreshToken.UpdateAsync(refresh);
 
-        //    if (!todo.UserId.Equals(user.UserId))
-        //    {
-        //        return (false, 403, new ErrorMessageDTO { Message = "Forbidden" }, null);
-        //    }
-
-        //    return (true, 200, null, todo);
-
-        //}
+            return GenerateToken(user);
+        }
 
         public int? GetUserForClaims()
         {
@@ -161,5 +139,30 @@ namespace TodoListAPI.Services
 
             return userId;
         }
+
+        public string GenerateRefreshToken()
+        {
+            byte[] randomNumber = new Byte[32];
+            using RandomNumberGenerator rng = RandomNumberGenerator.Create();
+            rng.GetBytes(randomNumber);
+            return Convert.ToBase64String(randomNumber);
+        }
+
+        public string GenerateAndSaveRefreshTokenAsync(User user)
+        {
+            string token = GenerateRefreshToken();
+            RefreshToken refreshToken = new()
+            {
+                Token = token,
+                IsRevoked = false,
+                UserId = user.Id,
+                Expires = DateTime.Now.AddDays(1)
+            };
+            _repository.RefreshToken.CreateAsync(refreshToken);
+            _repository.SavechangeAsync();
+
+            return token;
+        }
+
     }
 }

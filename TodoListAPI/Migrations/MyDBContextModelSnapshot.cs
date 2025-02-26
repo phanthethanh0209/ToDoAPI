@@ -22,6 +22,37 @@ namespace TodoListAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("TodoListAPI.Models.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Expires")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRevoked")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Token")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("RefreshToken", (string)null);
+                });
+
             modelBuilder.Entity("TodoListAPI.Models.Todo", b =>
                 {
                     b.Property<int>("Id")
@@ -95,6 +126,17 @@ namespace TodoListAPI.Migrations
                         });
                 });
 
+            modelBuilder.Entity("TodoListAPI.Models.RefreshToken", b =>
+                {
+                    b.HasOne("TodoListAPI.Models.User", "User")
+                        .WithMany("RefreshTokens")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("TodoListAPI.Models.Todo", b =>
                 {
                     b.HasOne("TodoListAPI.Models.User", "User")
@@ -108,6 +150,8 @@ namespace TodoListAPI.Migrations
 
             modelBuilder.Entity("TodoListAPI.Models.User", b =>
                 {
+                    b.Navigation("RefreshTokens");
+
                     b.Navigation("Todos");
                 });
 #pragma warning restore 612, 618

@@ -9,6 +9,6 @@
 
         // navigation property
         public ICollection<Todo> Todos { get; set; } = new List<Todo>();
-        //public ICollection<RefreshToken> refreshTokens { get; set; }
+        public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     }
 }

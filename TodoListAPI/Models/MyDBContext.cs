@@ -9,6 +9,7 @@ namespace TodoListAPI.Models
         #region DbSet
         public DbSet<User> Users { get; set; }
         public DbSet<Todo> Todos { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         #endregion
 
@@ -37,6 +38,16 @@ namespace TodoListAPI.Models
 
                 e.HasOne(t => t.User)
                     .WithMany(u => u.Todos)
+                    .HasForeignKey(f => f.UserId);
+            });
+
+            modelBuilder.Entity<RefreshToken>(e =>
+            {
+                e.ToTable("RefreshToken");
+                e.HasKey(pk => pk.Id);
+                e.HasIndex(e => e.Token).IsUnique();
+                e.HasOne(u => u.User)
+                    .WithMany(r => r.RefreshTokens)
                     .HasForeignKey(f => f.UserId);
             });
         }

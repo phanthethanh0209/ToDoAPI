@@ -6,6 +6,7 @@ namespace TodoListAPI.Repositories
     {
         IRepositoryBase<User> User { get; }
         IRepositoryBase<Todo> Todo { get; }
+        IRepositoryBase<RefreshToken> RefreshToken { get; }
 
         Task SavechangeAsync();
     }
@@ -26,6 +27,11 @@ namespace TodoListAPI.Repositories
 
         public IRepositoryBase<Todo> TodoRepositoryBase;
         public IRepositoryBase<Todo> Todo => TodoRepositoryBase ??= new RepositoryBase<Todo>(_db);
+
+
+        public IRepositoryBase<RefreshToken> RefreshTokenRepositoryBase;
+        public IRepositoryBase<RefreshToken> RefreshToken => RefreshTokenRepositoryBase ??= new RepositoryBase<RefreshToken>(_db);
+
 
         public async Task SavechangeAsync()
         {

@@ -96,7 +96,7 @@ namespace TodoListAPI.Services
                 return null;
             }
 
-            IEnumerable<Todo> todos = await _repository.Todo.GetTodoListWithPaginationAsync(t => t.UserId == userId, page, limit);
+            IEnumerable<Todo> todos = await _repository.Todo.GetAllWithPaginationAsync(t => t.UserId == userId, page, limit);
             List<TodoItemResponseDTO> todoDTOs = _mapper.Map<List<TodoItemResponseDTO>>(todos);
             int total = todoDTOs.Count;
             TodoListDTO todoListDTO = new()
@@ -124,7 +124,7 @@ namespace TodoListAPI.Services
                 return null;
             }
 
-            IEnumerable<Todo> todos = await _repository.Todo.GetTodoListWithPaginationAsync(t => t.UserId == userId && t.Title.Contains(title), page, limit);
+            IEnumerable<Todo> todos = await _repository.Todo.GetAllWithPaginationAsync(t => t.UserId == userId && t.Title.Contains(title), page, limit);
             if (todos == null)
                 return null;
 

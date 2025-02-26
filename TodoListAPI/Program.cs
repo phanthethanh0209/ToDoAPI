@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 using TodoListAPI.Mapper;
 using TodoListAPI.Models;
@@ -20,7 +21,29 @@ namespace TodoListAPI
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(options =>
+            {
+                OpenApiSecurityScheme jwtSecurityScheme = new()
+                {
+                    BearerFormat = "JWT",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = JwtBearerDefaults.AuthenticationScheme,
+                    Description = "Enter your JWT Access Token",
+                    Reference = new OpenApiReference
+                    {
+                        Id = JwtBearerDefaults.AuthenticationScheme,
+                        Type = ReferenceType.SecurityScheme
+                    }
+                };
+
+                options.AddSecurityDefinition("Bearer", jwtSecurityScheme);
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {jwtSecurityScheme, Array.Empty<String>() }
+                });
+            });
 
 
             // Read config JWT from appsetting.json

@@ -18,7 +18,7 @@ namespace TodoListAPI.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO userDTO)
         {
-            (bool Success, string ErrorMessage, TokenDTO token) result = await _authService.Register(userDTO);
+            (bool Success, string? ErrorMessage, TokenDTO? token) result = await _authService.Register(userDTO);
             if (!result.Success)
                 return BadRequest(result.ErrorMessage);
 
@@ -28,11 +28,23 @@ namespace TodoListAPI.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO userDTO)
         {
-            (bool Success, string ErrorMessage, TokenDTO token) result = await _authService.Login(userDTO);
+            (bool Success, string? ErrorMessage, TokenDTO? token) result = await _authService.Login(userDTO);
             if (!result.Success)
                 return BadRequest(result.ErrorMessage);
 
             return Ok(result.token);
+        }
+
+        [HttpPost("RefreshToken")]
+        public async Task<IActionResult> RefreshToken(string token)
+        {
+            TokenDTO? result = await _authService.RefreshToken(token);
+            if (result is null)
+            {
+                return Unauthorized("Invalid refresh token");
+            }
+            return Ok(result);
+
         }
     }
 }
